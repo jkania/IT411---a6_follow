@@ -1,0 +1,45 @@
+<!doctype html>
+<head>
+    <title>IT 411 - Jennifer Kania - Assignment 6 - Follow</title>
+    <link href="stylesheets/main.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(function() {
+            var init = true;
+            $(document).on('click', function() {
+                $(this)[init?'on':'off']('mousemove', follow);
+                init = !init;
+                 $('.isMoving').hide();
+                $('.isNotMoving').show();
+            }).trigger('click');
+
+            function follow(e) {
+                var xPos = e.pageX;
+                var yPos = e.pageY;
+                $("#imglocation").html("The image is at: " + xPos + ", " + yPos);
+                $('.isNotMoving').hide();
+                $('.isMoving').show();
+                $("#imgFollow").offset({
+                    left: e.pageX,
+                    top: e.pageY
+                });
+            }
+         
+        });
+            
+    </script>
+</head>
+<body>
+    
+<h1>Follow Me</h1>
+
+    
+<h2 id="imglocation"></h2> <div class="isNotMoving"> and is not moving.</div> <div class="isMoving"> and is moving.</div>
+
+    <img id="imgFollow" width="75px" height="75px" src="images/pencils.jpg"></img>
+    <div class="footer">
+    <p>Created by Jennifer Kania</p>
+  </div>
+</body>
+
+</html>
